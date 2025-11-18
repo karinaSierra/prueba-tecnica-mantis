@@ -10,7 +10,7 @@ load_dotenv()
 
 app = Flask(__name__)
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # 16MB max file size
-# En Vercel, usar /tmp para archivos temporales
+# En Vercel, usar /tmp para archivos temporales (solo lectura/escritura permitida)
 app.config['UPLOAD_FOLDER'] = '/tmp/uploads' if os.path.exists('/tmp') else 'uploads'
 
 # Crear carpeta de uploads si no existe
@@ -591,6 +591,7 @@ def process_file():
             os.remove(file_path)
         return jsonify({'error': str(e)}), 500
 
+# Para desarrollo local
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
 
