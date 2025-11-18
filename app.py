@@ -550,6 +550,16 @@ def generate_simple_summary(text):
 def index():
     return render_template('index.html')
 
+@app.route('/health')
+def health():
+    """Endpoint de salud para verificar que la app funciona"""
+    return jsonify({
+        'status': 'ok',
+        'message': 'Flask app is running',
+        'upload_folder': app.config['UPLOAD_FOLDER'],
+        'has_openai': client is not None
+    })
+
 @app.route('/process', methods=['POST'])
 def process_file():
     if 'file' not in request.files:
