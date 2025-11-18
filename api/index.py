@@ -15,8 +15,9 @@ if root_dir not in sys.path:
 # Cambiar al directorio raíz para que Flask encuentre templates y static
 os.chdir(root_dir)
 
-# Importar la aplicación Flask
-from app import app
+# Importar la aplicación Flask desde api/app.py
+# Ahora app.py está en el mismo directorio que requirements.txt
+from api.app import app
 
 # Vercel Python runtime espera que exportemos la app Flask directamente
 # El runtime maneja automáticamente la conversión WSGI a HTTP

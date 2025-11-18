@@ -1,0 +1,8 @@
+{
+  "name": "prueba-mantis",
+  "version": "1.0.0",
+  "scripts": {
+    "install": "pip install -r api/requirements.txt"
+  }
+}
+
